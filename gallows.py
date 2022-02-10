@@ -1,5 +1,5 @@
 from random import choice
-gallows = (
+gallows = [
 	"""
 	  ______
 	 | /    |
@@ -30,37 +30,47 @@ gallows = (
 	 |      |  
 	 |      0
 	 |     /|\\
-	 |     / \
+	 |     / \\
 	 |
 	-------
 	"""
-	)
-max_wrong = len(gallows)
-words = ("fruit", "game", "programing")
+]
+words = ["eagle", "game", "programing"]
 word = choice(words)
 so_far = "_" * len(word)
+print(so_far)
 wrong = 0
-guess = input("enter the letter")
-if guess in word:
-	print("\nYour answer is true")
-	new = ""
-	for i in range(len(word)):
-		if guess == word[i]:
-			new += guess
-		else:
-			new += so_far[i]
-			print(gallows[0])
-	so_far = new
-else:
-	print("\nYour answer is wrong")
-	wrong += 1
+count = 0
+a = len(word)
+
+while count < len(word):
+	guess = input("enter the letter\n")
+	
+
+		
+	if guess in word:
+		print("\nYour answer is true")
+		count += 1		
+	else:
+		print("\nYour answer is wrong")
+		wrong += 1
+		print(gallows[wrong - 1])
+	
+	if count == len(word) and wrong != 3:
+		print("you win")
+		break
+	elif wrong == 3:
+		print("you lose")
+		break
 
 
-if wrong == max_wrong:
-	print(gallows[wrong])
-	print("you lose")
-else:
-	print("you win")
+
+
+
+	
+
+	
+	
 
 
 	
